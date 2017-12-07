@@ -1,7 +1,7 @@
 import CoreService
 
-struct Image: Codable {
-  let id: Identifier<Image>
-  let url: String
-  let storageUrl: String
+public struct Image: Codable {
+  public let id: Identifier<Image>
+  public let url: String
+  public let storageUrl: String
 }

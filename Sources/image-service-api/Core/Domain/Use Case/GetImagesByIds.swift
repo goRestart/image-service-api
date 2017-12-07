@@ -1,6 +1,6 @@
 import CoreService
 
-struct GetImagesByIds {
+public struct GetImagesByIds {
   
   private let imageService: ImageService
   
@@ -8,7 +8,7 @@ struct GetImagesByIds {
     self.imageService = imageService
   }
   
-  func execute(with ids: [Identifier<Image>]) throws -> [Image]? {
+  public func execute(with ids: [Identifier<Image>]) throws -> [Image]? {
     return try imageService.get(with: ids)
   }
 }
