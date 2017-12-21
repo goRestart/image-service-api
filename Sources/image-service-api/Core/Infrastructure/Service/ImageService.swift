@@ -4,10 +4,10 @@ import Foundation
 
 struct ImageService {
   
-  private let client: ClientProtocol
+  private let clientProvider: ClientProvider
   
-  init(client: ClientProtocol) {
-    self.client = client
+  init(clientProvider: ClientProvider) {
+    self.clientProvider = clientProvider
   }
   
   func get(with ids: [CoreService.Identifier<Image>]) throws -> [Image]? {
@@ -17,7 +17,7 @@ struct ImageService {
 
   private func unwrap(_ endpoint: Endpoint) throws -> JSON? {
     do {
-      let response = try client.get(endpoint.path)
+      let response = try clientProvider.client().get(endpoint.path)
       guard response.status == .ok,
         let json = response.json else {
           return nil
